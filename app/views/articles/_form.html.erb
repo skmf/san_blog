@@ -1,28 +1,40 @@
-<ul>
-<% if @article.errors.any? %>
-    <% @article.errors.full_messages.each do |msg| %>
-        <li> <%= msg %> </li>
-    <% end %>
-</ul>
-<% end %>
 
-<%= form_for @article do |f| %>
+<%= render 'shared/errors', obj: @article  %>
 
-<p>
-    <%= f.label :title %> <br>
-    <%= f.text_field :title %>
-</p>
+<div class='row'>
+    <div class="col-md-12">
+        <%= form_for(@article, :html => { class: "form-horizontal", role: "form" }) do |f| %>
 
-<p>
-   <%= f.label :description %> <br>
-    <%= f.text_area :description %> 
-</p>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                     <%= f.label :title %> <br>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :title, class: "form-control", placeholder: "Title of Article", autofocus: true %>
+                </div>
+            </div>
 
-<p>
-    <%= f.submit %>
-</p>
- 
-<% end %>
-
-
-<%= link_to "Back to Article Listing", articles_path %>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                     <%= f.label :description %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Body of article", autofocus: true %>
+                </div>
+            </div>
+            
+            <div class="form-group center">
+                <div class="col-sm-12">
+                     <%= f.submit class: 'btn btn-primary bt-lg'%>
+                </div>
+            </div>
+             
+        <% end %>
+        
+        
+        <div class="center">
+            <%= link_to "Back to Article Listing", articles_path %>
+        </div>
+        
+    </div>
+</div>
