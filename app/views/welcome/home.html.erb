@@ -1,4 +1,8 @@
 <div class="center jumbotron">
-    <h1>Sample Blog</h1>
-    <%= link_to "Sign up now", "#", class: "btn btn-primary btn-danger btn-lg btn-xlarge" %> 
+    <h1>HP</h1>
+    <!--<#%= link_to "Sign up now", "#", class: "btn btn-primary btn-danger btn-lg btn-xlarge" %> -->
+   
+   <% if !logged_in? %>
+    <%= link_to "Sign up now", signup_path, class: "btn btn-primary btn-danger btn-lg btn-xlarge" %> 
+    <% end %>
 </div>
