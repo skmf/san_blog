@@ -3,6 +3,10 @@ class UsersController < ApplicationController
         @user = User.new
     end
     
+    def index 
+        @users = User.all
+    end
+    
     def create
         #white list everything
         @user = User.new(user_params)
@@ -28,6 +32,10 @@ class UsersController < ApplicationController
         else
             render 'edit'
         end
+    end
+    
+    def show
+        @user = User.find(params[:id])
     end
     
     private 
